@@ -1,0 +1,8 @@
+<div style="width: 26em" class="list-group mt-3">
+    {% for object in queryset %}
+        <a href="{{ object.get_absolute_url }}" class="list-group-item list-group-item-action">{{ object.name }}</a> 
+    {% empty %}
+        <a href="" class="list-group-item list-group-item-action">No results found</a>
+    {% endfor %}
+    <a href="{% url 'articles:search:search' %}?q={{request.GET.q}}&topic={{request.GET.topic}}" class="list-group-item list-group-item-action bg-primary bg-gradient text-white">View All</a>
+</div>

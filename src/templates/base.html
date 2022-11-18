@@ -1,0 +1,10 @@
+{% extends 'boilerplate-base.html' %}
+
+{% block body %}
+    {% include 'base/navbar.html' %}       
+    <div class="container col-ls-8" style="padding-top: 150px"> 
+        {% block content %}
+        {% endblock content %}
+    </div>
+    {% include 'base/footer.html' %}       
+{% endblock body %}

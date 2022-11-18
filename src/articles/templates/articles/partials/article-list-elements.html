@@ -1,0 +1,17 @@
+{% for article in object_list %}
+    {% include 'articles/partials/article-inline.html' with article_obj=article %}
+{% empty %}
+    <blockquote class="blockquote ms-4">
+        <p> No results founded </p>
+    </blockquote>
+{% endfor %}
+
+{% if page_obj.has_next %}
+    <div id="loadmore">
+        <button class="btn btn-outline-primary mt-4" hx-get="{% url 'articles:article-list' %}?page={{ page_obj.number|add:1 }}" 
+                            hx-target="#loadmore" 
+                            hx-swap="outerHTML">
+            Load More Articles ... 
+        </button>
+    </div>
+{% endif %}

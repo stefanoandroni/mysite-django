@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if front_page_obj %}
+    <div class="row">
+        <div class="col-12 col-lg-8 my-auto">
+            <a href="{{ front_page_obj.a0.get_absolute_url }}" class=" href-no-style article-hover">
+                <div class="card" href="#">
+                    <img src="{{ front_page_obj.a0.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ front_page_obj.a0.title }} <span class="badge bg-secondary ">{{ front_page_obj.a0.get_topic_display }}</span></h5>
+                    <p class="card-text">{{ front_page_obj.a0.summary_text }}</p>
+                    <p class="card-text"><small class="text-muted">{{ front_page_obj.a0.timestamp|date:'F j, Y' }}</small> <small class="text-muted float-end">{{ front_page_obj.a0.get_number_of_comments }} Comment{{ front_page_obj.a0.get_number_of_comments|pluralize }}</small></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-12 col-lg-4">
+            <a href="{{ front_page_obj.a1.get_absolute_url }}" class="my-2 href-no-style article-hover">
+                <div class="card my-2" href="#">
+                    <img src="{{ front_page_obj.a1.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ front_page_obj.a1.title }} <span class="badge bg-secondary ">{{ front_page_obj.a1.get_topic_display }}</span> </h5>
+                    <p class="card-text"><small class="text-muted">{{ front_page_obj.a1.timestamp|date:'F j, Y' }}</small><small class="text-muted float-end">{{ front_page_obj.a1.get_number_of_comments }} Comment{{ front_page_obj.a1.get_number_of_comments|pluralize }}</small></p>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ front_page_obj.a2.get_absolute_url }}" class="my-2 href-no-style article-hover">
+                <div class="card my-2" href="#">
+                    <img src="{{ front_page_obj.a2.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ front_page_obj.a2.title }} <span class="badge bg-secondary ">{{ front_page_obj.a2.get_topic_display }}</span> </h5>
+                    <p class="card-text"><small class="text-muted">{{ front_page_obj.a2.timestamp|date:'F j, Y' }}</small><small class="text-muted float-end">{{ front_page_obj.a2.get_number_of_comments }} Comment{{ front_page_obj.a2.get_number_of_comments|pluralize }}</small></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <a href="{{ front_page_obj.a3.get_absolute_url }}" class="href-no-style article-hover">
+                <div class="card mt-2 h-100">
+                    <img src="{{ front_page_obj.a3.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ front_page_obj.a3.title }} <span class="badge bg-secondary ">{{ front_page_obj.a3.get_topic_display }}</span> </h5>
+                        <p class="card-text"><small class="text-muted">{{ front_page_obj.a3.timestamp|date:'F j, Y' }}</small><small class="text-muted float-end">{{ front_page_obj.a3.get_number_of_comments }} Comment{{ front_page_obj.a3.get_number_of_comments|pluralize }}</small></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-6">
+            <a href="{{ front_page_obj.a4.get_absolute_url }}" class="href-no-style article-hover">
+                <div class="card mt-2 h-100">
+                    <img src="{{ front_page_obj.a4.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ front_page_obj.a4.title }} <span class="badge bg-secondary ">{{ front_page_obj.a4.get_topic_display }}</span> </h5>
+                        <p class="card-text"><small class="text-muted">{{ front_page_obj.a4.timestamp|date:'F j, Y' }}</small><small class="text-muted float-end">{{ front_page_obj.a4.get_number_of_comments }} Comment{{ front_page_obj.a4.get_number_of_comments|pluralize }}</small></p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5> <span class="badge bg-secondary ">{{ front_page_obj.a5.get_topic_display }}</span> </h5>  
+                    <h5 class="card-title"> {{ front_page_obj.a5.title }} </h5>
+                    <p class="card-text">{{ front_page_obj.a5.summary_text }}</p>
+                    <a href="{{ front_page_obj.a5.get_absolute_url }}" class="btn btn-outline-primary ">Read</a>
+                </div>
+                <div class="card-footer text-muted p-1 ps-2 bg-white">
+                    {{ front_page_obj.a5.timestamp|date:'F j, Y' }} 
+                    <small class="text-muted float-end me-3">{{ front_page_obj.a5.get_number_of_comments }} Comment{{ front_page_obj.a5.get_number_of_comments|pluralize}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5> <span class="badge bg-secondary ">{{ front_page_obj.a6.get_topic_display }}</span> </h5>  
+                    <h5 class="card-title"> {{ front_page_obj.a6.title }} </h5>
+                    <p class="card-text">{{ front_page_obj.a6.summary_text }}</p>
+                    <a href="{{ front_page_obj.a6.get_absolute_url }}" class="btn btn-outline-primary ">Read</a>
+                </div>
+                <div class="card-footer text-muted p-1 ps-2 bg-white">
+                    {{ front_page_obj.a6.timestamp|date:'F j, Y' }} 
+                    <small class="text-muted float-end me-3">{{ front_page_obj.a6.get_number_of_comments }} Comment{{ front_page_obj.a6.get_number_of_comments|pluralize}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5> <span class="badge bg-secondary ">{{ front_page_obj.a7.get_topic_display }}</span> </h5>  
+                    <h5 class="card-title"> {{ front_page_obj.a7.title }} </h5>
+                    <p class="card-text">{{ front_page_obj.a7.summary_text }}</p>
+                    <a href="{{ front_page_obj.a7.get_absolute_url }}" class="btn btn-outline-primary ">Read</a>
+                </div>
+                <div class="card-footer text-muted p-1 ps-2 bg-white">
+                    {{ front_page_obj.a7.timestamp|date:'F j, Y' }}
+                    <small class="text-muted float-end me-3">{{ front_page_obj.a7.get_number_of_comments }} Comment{{ front_page_obj.a7.get_number_of_comments|pluralize }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 col-lg-10 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5> <span class="badge bg-secondary ">{{ front_page_obj.a8.get_topic_display }}</span> </h5>  
+                    <h5 class="card-title"> {{ front_page_obj.a8.title }} </h5>
+                    <p class="card-text">{{ front_page_obj.a8.summary_text }}</p>
+                    <a href="{{ front_page_obj.a8.get_absolute_url }}" class="btn btn-outline-primary ">Read</a>
+                </div>
+                <div class="card-footer text-muted p-1 ps-2 bg-white">
+                    {{ front_page_obj.a8.timestamp|date:'F j, Y' }} 
+                    <small class="text-muted float-end me-3">{{ front_page_obj.a8.get_number_of_comments }} Comment{{ front_page_obj.a8.get_number_of_comments|pluralize }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-exclamation-triangle-fill ms-2 me-4" viewBox="0 0 16 16">
+            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+        <div>
+            Front Page not set up correctly by admin
+        </div>
+    </div>
+{% endif %}
+
+{% endblock content %}

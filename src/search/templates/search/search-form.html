@@ -1,0 +1,31 @@
+  <div>
+    <form action="{% url 'articles:search:search' %}" method="GET" class="d-flex" role="search"> 
+        <select id="topic-type" name="topic"  class="form-select" aria-label="Default select example"
+        hx-get="{% url 'articles:search:search' %}"
+        hx-trigger="change, click"
+        hx-include="#search-query"
+        hx-swap="innerHTML"
+        hx-target="#typeahead-results"
+        >  
+            {% for article_topic in  article_topic_list %}
+                <option value="{{ article_topic.value }}" {% if article_topic == request.GET.topic %}selected{% endif %}>{{ article_topic.label }}</option>
+            {% endfor %}
+
+        </select>       
+        <input id="search-query" class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="q" value="{{ request.GET.q }}"
+        hx-get="{% url 'articles:search:search' %}"
+        hx-trigger="change delay:200ms, keyup changed delay:200ms"
+        hx-include="#topic-type"
+        hx-swap="innerHTML"
+        hx-target="#typeahead-results"/>
+        <button class="btn btn-outline-light" type="submit">Search</button>
+        {% comment %} <button class="btn btn-outline-light" type="reset">X</button> {% endcomment %}
+    </form>
+    <div class="position-absolute" id="typeahead-results">
+    </div>
+    
+</div>
+
+
+
+

@@ -1,0 +1,62 @@
+<form class="row g-3" method="POST" action="." enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-12">
+        <label class="form-label">{{ form.title.label }}</label>
+        {{ form.title }}
+        {% if form.title.errors %}
+            <div class="alert alert-danger py-0 mb-0 mt-1" role="alert">
+                {{ form.title.errors }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">{{ form.topic.label }}</label>
+        {{ form.topic }}
+        {% if form.topic.errors %}
+            <div class="alert alert-danger py-0 mb-0 mt-1" role="alert">
+                {{ form.topic.errors }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">{{ form.image.label }}</label>
+        {{ form.image }}
+        {% if form.image.errors %}
+            <div class="alert alert-danger py-0 mb-0 mt-1" role="alert">
+                {{ form.image.errors }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-12">
+        <label class="form-label">{{ form.summary_text.label }}</label>
+        {{ form.summary_text }}
+        {% if form.summary_text.errors %}
+            <div class="alert alert-danger py-0 mb-0 mt-1" role="alert">
+                {{ form.summary_text.errors }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-12">
+        <label class="form-label">{{ form.content.label }}</label>
+        {{ form.content }}
+        {% if form.content.errors %}
+            <div class="alert alert-danger py-0 mb-0 mt-1" role="alert">
+                {{ form.content.errors }}
+            </div>
+        {% endif %}
+    </div>
+
+    {% if object %}
+        <input class="col-11 col-md-3 mx-auto mt-3 btn btn-outline-secondary" type="submit" value="Update"> 
+    {% else %}
+        <input class="col-11 col-md-3 mx-auto mt-3 btn btn-outline-secondary" type="submit" value="Public"> 
+    {% endif %}
+
+</form>
+
+{% if object %}
+    <form class="row mt-2" method="POST" action="{{ object.get_delete_url }}"> {% csrf_token %}
+        <input class="col-11 col-md-3 mx-auto mt-3 btn btn-outline-danger" type="submit" value="Delete"> 
+    </form>
+{% endif %}
+

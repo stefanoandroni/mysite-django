@@ -1,0 +1,40 @@
+<div id="comment-list-container" class="col-12 col-lg-10">
+
+    {% if comment_list|length == 0 %}
+        <p> No comment. Be the first to comment. </p>
+    {% endif %}
+
+    {% for comment in comment_list %}
+        <div class="comment-container card mt-2">
+            {% include 'articles/partials/comment-inline.html' with comment_obj=comment%}
+        </div>
+    {% endfor %}
+
+    {% if excess_comments > 0 %}
+
+    <div class="row mt-2 ms-2">
+        {% comment %} not good solution {% endcomment %}
+        {% if qs_all %}
+            <a id="hidecomments" class="link-bold link-primary" href="."
+            hx-target="#comment-list-container"
+            hx-get="{{ article_obj.get_hx_comment_list_url }}"
+            hx-trigger="click"
+            > Hide last ({{ excess_comments }} comments) ...</a>
+        {% else %}
+            <a id="showcomments" class="link-bold link-primary" href="."
+            hx-target="#comment-list-container" 
+            hx-get="{{ article_obj.get_hx_comment_list_url }}?qs=all"
+            hx-trigger="click"
+            > Show more ({{ excess_comments }} comments) ...</a>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <br> <br>
+    
+    {% include 'articles/partials/comment-create-form.html' %}
+</div>
+
+
+
+

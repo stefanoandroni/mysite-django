@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Articles </h1>
+<div> 
+    <blockquote class="blockquote mb-4">
+        {% if query or topic %}
+            <p>Searched for '{{ query }}' in '{{ topic.label|title }}'</p>
+        {% endif %}
+        <p>{{ page_obj.paginator.count }} Article{{ page_obj.paginator.count|pluralize }} </p>
+    </blockquote>
+    {% include 'articles/partials/article-list-elements.html' %}
+</div>
+{% endblock content %}

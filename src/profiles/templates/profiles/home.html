@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row py-4 px-4 text-center bg-dark text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-wrench-adjustable-circle" viewBox="0 0 16 16">
+        <path d="M12.496 8a4.491 4.491 0 0 1-1.703 3.526L9.497 8.5l2.959-1.11c.027.2.04.403.04.61Z"/>
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-1 0a7 7 0 1 0-13.202 3.249l1.988-1.657a4.5 4.5 0 0 1 7.537-4.623L7.497 6.5l1 2.5 1.333 3.11c-.56.251-1.18.39-1.833.39a4.49 4.49 0 0 1-1.592-.29L4.747 14.2A7 7 0 0 0 15 8Zm-8.295.139a.25.25 0 0 0-.288-.376l-1.5.5.159.474.808-.27-.595.894a.25.25 0 0 0 .287.376l.808-.27-.595.894a.25.25 0 0 0 .287.376l1.5-.5-.159-.474-.808.27.596-.894a.25.25 0 0 0-.288-.376l-.808.27.596-.894Z"/>
+      </svg>
+    <h1 class="display-8 fw-bold">{{request.user.username}}</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead my-0"><small>joined on </small>{{request.user.date_joined|date:'F j, Y'}}</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+        <a href="{% url 'articles:article-create' %}" class="btn btn-outline-light">Create Article</a>
+      </div>
+    </div>
+</div>
+
+<div class="row py-4 px-4 text-center bg-white text-dark">
+    <h2 class="display-6 fw-bold">Articles</h2>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead my-0"><small>Articles published:</small> {{ tot_articles }}</p>
+        {% comment %} <p class="lead my-0"><small>Articles included on the front page (in absolute terms):</small> 2 </p> {% endcomment %}
+        <p class="lead my-0"><small>Comments received:</small> {{ tot_comments_recived }}</p>
+    </div>
+
+    {% if tot_articles > 0 %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+            <a class="btn btn-outline-dark mt-2" data-bs-toggle="collapse" href="#articleTable" role="button" aria-expanded="false" aria-controls="articleTable">
+                Hide/Show Table
+            </a>
+        </div>
+        <div id="articleTable" class="table-responsive collapse" hx-get="{% url 'profiles:article-list' %}" hx-target="this" hx-trigger="load" hx-swap="innerHTML">
+        </div>
+    {% else %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+            <a class="btn btn-outline-dark mt-2 disabled" data-bs-toggle="collapse" href="#articleTable" role="button" aria-expanded="false" aria-controls="articleTable">
+                No Articles
+            </a>
+        </div>
+    {% endif %}
+
+</div>
+
+<div class="row py-4 pb-5 px-4 text-center bg-white text-dark">
+    <h2 class="display-6 fw-bold">Comments</h2>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead my-0"><small>Comments published:</small> {{ tot_comments }}</p>
+    </div>
+
+    {% if tot_comments > 0 %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+            <a class="btn btn-outline-dark mt-2" data-bs-toggle="collapse" href="#commentTable" role="button" aria-expanded="false" aria-controls="commentTable">
+                Hide/Show Table
+            </a>
+        </div>
+        <div id="commentTable" class="table-responsive collapse" hx-get="{% url 'profiles:comment-list' %}" hx-target="this" hx-trigger="load" hx-swap="innerHTML">
+        </div>
+    {% else %}
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-3">
+            <a class="btn btn-outline-dark disabled mt-2" data-bs-toggle="collapse" href="#commentTable" role="button" aria-expanded="false" aria-controls="commentTable">
+                No Comments
+            </a>
+        </div>
+    {% endif %}
+
+</div>
+
+<div class="row py-3 px-4 bg-dark text-white text-center">
+    <h5> Note </h5>
+    <ul>
+        <li> To <b>delete an article</b> you need to go to the edit page
+            (<a class="href-no-style link-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+            </a>)
+        </li>
+        <li class="mt-2"> To <b>delete/edit a comment</b> you need to go to the page of the article that contains it
+            (<a class="href-no-style link-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-right-square" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 3.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z"/>
+                </svg>
+            </a>)
+        </li>
+        <li class="mt-2"> '<b>Comments received</b>' also include your own comments on published articles </li>
+    </ul>
+</div>
+{% endblock content %}

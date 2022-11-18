@@ -1,0 +1,2 @@
+<h5 class="card-title">{{ comment_obj.author }} {% if comment_obj.author == request.user %}(You){% endif %}</h5>
+<h6 class="card-subtitle mb-2 text-muted">{{ comment_obj.updated }} {% if comment_obj.updated != comment_obj.timestamp %} (updated) {% endif %}</h6>

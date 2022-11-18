@@ -1,0 +1,7 @@
+.table {
+    --bs-table-border-color: black !important; 
+}
+
+ul {
+    list-style-type: none;
+}

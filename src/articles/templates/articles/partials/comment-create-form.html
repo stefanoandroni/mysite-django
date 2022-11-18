@@ -1,0 +1,8 @@
+<form hx-target="#comment-list-container" hx-swap="outerHTML" hx-post="{{ article_obj.get_hx_comment_create_url }}">
+    {% csrf_token %}
+    {% for field in comment_form  %}
+        <p> {{field}} </p> 
+    {% endfor %}
+    <button class="btn btn-outline-primary htmx-inverted-indicator" type="submit"> Comment </button>
+    <div class="htmx-indicator"> Loading... </div>
+</form>

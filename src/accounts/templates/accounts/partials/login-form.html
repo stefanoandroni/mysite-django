@@ -1,0 +1,31 @@
+{% if not request.user.is_authenticated %}
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+        <form method="POST" action="{% url 'accounts:login' %}"> {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username" class="form-label">{{ form.username.label }}</label>
+                {{ form.username }}
+            </div>
+            <div class="mb-3">
+                <label for="id_password" class="form-label">{{ form.password.label }}</label>
+                {{ form.password }}
+            </div>
+            {% if form.errors %}
+                <div class="alert alert-danger py-1" role="alert">
+                    Your username and password didn't match. Please try again.
+                </div>
+            {% endif %}
+            <div>
+                <button type="submit" class="btn btn-secondary">Login</button>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    <p class="mt-2 "> Need an account? Please <a href="{% url 'accounts:register' %}" class="">register</a></p>
+{% else %}
+    {% include 'accounts/partials/already-logged.html' %}
+{% endif %}

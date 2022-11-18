@@ -1,0 +1,32 @@
+<table class="table fw-normal table-hover mt-3">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Article Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Timestamp</th>
+          <th scope="col">Updated</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for comment in comment_list %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ comment.article.title|truncatechars:25 }} {% if comment.article.author == request.user %}(Your){% endif %}</td>
+                <td>{{ comment.content|truncatechars:55 }}</td>
+                <td>{{ comment.timestamp }}</td>
+                <td>{% if comment.timestamp != comment.updated %}{{ comment.updated }}{% else %}-{% endif %}</td>
+                {% comment %} <td>True{{ article.is_in_front_page }}</td> {% endcomment %}
+                <td>
+                    <a class="href-no-style link-bold " href="{{ comment.article.get_absolute_url }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-right-square" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 3.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z"/>
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </tbody>
+    </table>

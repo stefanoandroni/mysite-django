@@ -1,0 +1,9 @@
+#search-nav select, input {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#search-nav select, input, button {
+    margin-left:2px;
+    margin-right:2px;
+}

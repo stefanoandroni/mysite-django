@@ -1,0 +1,20 @@
+{% comment %} {% if last %}
+    <div hx-get="{% url 'articles:article-list' %}?page={{ page_obj.number|add:1 }}" hx-trigger="revealed" hx-swap="afterend" hx-target="this">
+{% else %}
+    <div>
+{% endif %} {% endcomment %}
+
+<div class="card mt-5 col-md-10">
+    <div class="card-body">
+      <h5> <span class="badge bg-secondary ">{{ article_obj.get_topic_display }}</span> </h5>  
+      <h5 class="card-title"> {{ article_obj.title }} </h5>
+      <p class="card-text">{{ article_obj.summary_text }}</p>
+      <a href="{{ article_obj.get_absolute_url }}" class="btn btn-outline-primary ">Read</a>
+    </div>
+    <div class="card-footer bg-white text-muted p-1 ps-2">
+        {{ article_obj.timestamp|date:'F j, Y' }} 
+        <small class="text-muted float-end me-3">{{ article_obj.get_number_of_comments }} Commen{{ article_obj.get_number_of_comments|pluralize:"t,ts" }}</small>
+    </div>
+  </div>
+
+
