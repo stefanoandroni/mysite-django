@@ -24,7 +24,7 @@
   <li>Make migrations and migrate</li>
   <pre><code>$ py manage.py makemigrations</code></pre><pre><code>$ py manage.py migrate</code></pre>
   <li>Run server</li>
-  <pre><code>$ py manege.py runserver</code></pre>
+  <pre><code>$ py manage.py runserver</code></pre>
 </ol>
 <em><b>Note</b> change DJANGO SECRET_KEY in .env for production</em>
 
