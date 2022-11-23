@@ -26,7 +26,7 @@
   <li>Run server</li>
   <pre><code>$ py manage.py runserver</code></pre>
 </ol>
-<em><b>Note</b> change DJANGO SECRET_KEY in .env for production</em>
+<em><b>Note</b> Change DJANGO SECRET_KEY in .env for production</em>
 
 <h1>Note</h1>
 To use all features is highly recommended to:
@@ -41,6 +41,7 @@ Only registered users will be able to use the functions of the web application. 
 
 'mysite' is the project root directory.
 
+<em><b>Note</b> Excluded endpoints for htmx requests (not accessible) and for static files</em>
 <h2>Edpoints</h2>
 <h3>accounts </h3>
 <pre>
@@ -51,13 +52,12 @@ Only registered users will be able to use the functions of the web application. 
 </pre>
 <h3>articles</h3>
 <pre>
-/articles /
-          /create
-          /list
-          /search
-          /&lt;slug:slug&gt;  /
-          /&lt;slug:slug&gt;  /update/
-          /&lt;slug:slug&gt;  /delete/ 
+/articles /                                             
+          /create                             <em>Create</em>
+          /list                               <em>Retrieve (List)</em>
+          /&lt;slug:article_slug&gt;  /             <em>Retrieve (Detail)</em>
+          /&lt;slug:article_slug&gt;  /update/      <em>Update</em>          
+          /&lt;slug:article_slug&gt;  /delete/      <em>Delete</em>
 </pre>
 <h3>profiles</h3>
 <pre>
