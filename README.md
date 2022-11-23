@@ -41,7 +41,7 @@ Only registered users will be able to use the functions of the web application. 
 
 'mysite' is the project root directory.
 
-<em><b>Note</b> Excluded endpoints for htmx requests (not accessible) and for static files</em>
+<em><b>Note</b> The endpoints for htmx requests (not accessible) and for static files are not included</em>
 <h2>Edpoints</h2>
 <h3>accounts </h3>
 <pre>
