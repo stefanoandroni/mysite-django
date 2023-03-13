@@ -9,7 +9,7 @@
   <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" href="https://getbootstrap.com/" alt="bootstrap" height="50"/>
 </a>
 
-<p>A simple articles web application built with <b>django + htmx + Bootstrap</b>.</p>
+<p>A simple articles web application built with <b>django + htmx + Bootstrap</b>. (learning django)</p>
 
 <h1>Installation</h1>
 <ol type="1">
