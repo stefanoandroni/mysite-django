@@ -1,9 +1,9 @@
 <h1> Overview </h1>
 <a href="https://www.djangoproject.com/" target="_blank">
-    <img src="https://static.djangoproject.com/img/logos/django-logo-positive.svg" alt="django" height="50"/>
+    <img src="https://static.djangoproject.com/img/logos/django-logo-negative.1d528e2cb5fb.png" alt="django" height="52"/>
 </a> &nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://htmx.org/" target="_blank">
-  <img src="https://raw.githubusercontent.com/bigskysoftware/htmx/master/www/img/htmx_logo.1.png" href="https://htmx.org/" alt="htmx" height="50"/>
+  <img src="https://raw.githubusercontent.com/bigskysoftware/htmx/master/www/static/img/htmx_logo.1.png" alt="htmx" height="50"/>
 </a> &nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://getbootstrap.com/" target="_blank">
   <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" href="https://getbootstrap.com/" alt="bootstrap" height="50"/>
